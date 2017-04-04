@@ -1,11 +1,15 @@
 {
-  "name": "fb-fullstack",
+  "name": "generator-fb-fullstack",
   "version": "0.0.1",
   "main": "index.js",
   "repository": "https://github.com/Neitsch/fb-fullstack",
   "author": "Nigel Schuster <nigel.schusters@googlemail.com>",
   "license": "GNU GPLv3",
   "scripts": {
-    "build": "mkdir build && touch build/index.html"
+    "generate": "npm link && mkdir -p build && cd build && ../node_modules/.bin/yo doctor && ../node_modules/.bin/yo --help && ../node_modules/.bin/yo fb-fullstack"
+  },
+  "dependencies": {
+    "yeoman-generator": "^1.1.1",
+    "yo": "^1.8.5"
   }
 }
