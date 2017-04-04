@@ -1,11 +1,19 @@
 var Generator = require('yeoman-generator');
 
-module.exports = Generator.extend({
-  method1: function() {
-    this.fs.copyTpl(
-      this.templatePath('index.html'),
-      this.destinationPath('index.html'),
-      { title: "FB Stack" }
-    );
+module.exports = class extends Generator {
+  prompting() {
+    return this.prompt([{
+      type: 'input',
+      name: 'title',
+      message: 'The title of your website.',
+      default: 'FB Stack' // Default to current folder name
+    }, {
+      type: 'confirm',
+      name: 'graphql',
+      message: 'Create graphl endpoint',
+      default: true
+    }]).then((answers) => {
+      this.composeWith('fb-fullstack:html-page', {title: answers.title});
+    });
   }
-});
+}
