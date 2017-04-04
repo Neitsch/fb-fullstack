@@ -1,0 +1,6 @@
+language: generic
+
+script: mkdir build
+
+after_success:
+- bash ./deploy.sh
