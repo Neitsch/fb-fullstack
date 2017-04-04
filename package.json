@@ -1,0 +1,11 @@
+{
+  "name": "fb-fullstack",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/Neitsch/fb-fullstack",
+  "author": "Nigel Schuster <nigel.schusters@googlemail.com>",
+  "license": "GNU GPLv3",
+  "scripts": {
+    "build": "touch build/index.html"
+  }
+}
