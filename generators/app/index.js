@@ -5,7 +5,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('index.html'),
       this.destinationPath('index.html'),
-      {}
+      { title: "FB Stack" }
     );
   }
 };
