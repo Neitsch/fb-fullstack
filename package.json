@@ -6,6 +6,6 @@
   "author": "Nigel Schuster <nigel.schusters@googlemail.com>",
   "license": "GNU GPLv3",
   "scripts": {
-    "build": "touch build/index.html"
+    "build": "mkdir build && touch build/index.html"
   }
 }
