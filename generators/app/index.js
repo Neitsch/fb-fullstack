@@ -3,14 +3,7 @@ var path = require('path');
 
 module.exports = class extends Generator {
   prompting() {
-    if(this.option('headless')) {
-      this.answers = {
-        title: 'FB Stack',
-        graphql: true
-      }
-      return;
-    }
-    return this.prompt([{
+    var questions = [{
       type: 'input',
       name: 'title',
       message: 'The title of your website.',
@@ -20,7 +13,15 @@ module.exports = class extends Generator {
       name: 'graphql',
       message: 'Create graphl endpoint',
       default: true
-    }]).then((answers) => {
+    }];
+    if(this.option('headless')) {
+      this.answers = questions.reduce(function(all, val) {
+        all[val.name] = val.default;
+        return all;
+      }, {});
+      return;
+    }
+    return this.prompt(questions).then((answers) => {
       this.answers = answers;
     });
   }
