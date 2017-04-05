@@ -7,13 +7,13 @@ node_js:
 
 before_install:
   - npm install -g yarn
-  - npm install
+  - yarn install
 cache:
   yarn: true
   directories:
     - node_modules
 
-script: npm run generate
+script: yarn run generate
 
 after_success:
   - bash ./deploy.sh
