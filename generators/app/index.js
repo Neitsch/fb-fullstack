@@ -13,6 +13,11 @@ module.exports = class extends Generator {
       name: 'graphql',
       message: 'Create graphl endpoint',
       default: true
+    }, {
+      type: 'confirm',
+      name: 'heroku',
+      message: 'Create graphl endpoint',
+      default: true
     }];
     if(this.option('headless')) {
       this.answers = questions.reduce(function(all, val) {
@@ -27,5 +32,8 @@ module.exports = class extends Generator {
   }
   writing() {
     this.composeWith(path.join(__dirname, '../html-page/index.js'), {title: this.answers.title});
+    if(this.answers.heroku) {
+      this.composeWith(path.join(__dirname, '../heroku/index.js'))
+    }
   }
 }
