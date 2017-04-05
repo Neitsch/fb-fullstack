@@ -1,19 +1,21 @@
 sudo: false
-
 language: node_js
-
 node_js:
-  - "6"
-
+- '6'
 before_install:
-  - npm install -g yarn
-  - yarn install
+- npm install -g yarn
+- yarn install
 cache:
   yarn: true
   directories:
-    - node_modules
-
+  - node_modules
 script: yarn run generate
-
 after_success:
-  - bash ./deploy.sh
+- bash ./deploy.sh
+before_deploy:
+- cd out
+deploy:
+  provider: heroku
+  app: simple-app-neitsch
+  api_key:
+    secure: YfPPQ5/44iiKsefkv0sM0jpYzjlkj78o1TDNigj7ickXmNN1qTLp0NgWhdVcPSGur7M0VdbgKRz5bV9Ou7LpQ1CgaIWNQMphe8YPNMoKdOmfFvk5LDxG0dqsS8TEuFI9aNzyDka35/gN62ruXdLSvuCMYnlkXm8Tcyl03QbQ/V7dbrjMpNl/4LAWK4yMyuAaBu43NcG+/IrBNzMhQ9UBbvAg8HPi/Zx03LFmkjwZSk10EIqNQAcu2zCYOYT5avTKt3JcBX0yyz6lhHW8mOJK1aA4cJbuwFHZoHn0pz6KBtrgLHoRJa0OMdIEbGIHqpZ4JMLnmMs7y80r0KKZaguV/AO700k3zqaiwYIPhwaTFJn7/ycGN92VV7CQfQBAG55DQsepJyMvkDKNECcBYgz4DmQLnrPTiGF41JkBLg1M7J9sZFDco+P7HvN5cIC6bAjzZg+J6lj4Bjce16IU/UF+FvQDiT9Cvd0p0hY4IUJ8R17Pnnfz4D+wgwP6xme9KL80ctGN/n0eBlfDkgjKhm8pgSO1PUKkXVR25nOACsYVLsR8x/tqcNF+b2PeUuDRvwSsz/deBxSienO5ZeaOpFb6IjetuY3+UR1dFj3pbacIWhAMbpN+6FAv35dWVFk0bZknwlBSZRmZTQspksd14rZN3EPR4DIVdz8hzWF033mX688=
